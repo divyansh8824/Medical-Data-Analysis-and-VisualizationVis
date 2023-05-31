@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Lenovo/Desktop/BCE Task/tASK 4/task4.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="150"/><column_width id="3" width="2007"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,11:mainMedicalData"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">-- Retrieve all columns and records from the dataset:
+SELECT * from MedicalData;
+
+-- Retrieve the total number of records in the dataset:
+SELECT count(*) as Total_Record from MedicalData;
+
+-- Retrieve the average price of products:
+SELECT avg(price) from MedicalData;
+
+-- Retrieve the highest and lowest prices among the products:
+SELECT max(price) as Maximum_Price, min(price) as Minimum_Price from MedicalData;
+
+-- Retrieve the count of discontinued products:
+SELECT count(*) as Discounted_Product from MedicalData Where Is_discontinued == True;
+
+-- Retrieve the manufacturers with the highest average price:
+SELECT manufacturer_name, avg(price) as average_price from MedicalData GROUP By manufacturer_name 
+ORDER By average_price DESC LIMIT 1;
+
+-- Retrieve the top 10 products with the longest names:
+SELECT name FROM MedicalData ORDER by length(name) DESC LIMIT 10;
+
+-- Retrieve the products with a price greater than 1000:
+SELECT name,price from MedicalData WHERE price&gt;1000;
+
+-- Retrieve the products with a specific keyword in their name:
+SELECT *
+FROM MedicalData
+WHERE name LIKE '%50mg%';
+
+-- Retrieve the products with a pack size greater than or equal to 500 ml:
+SELECT * from MedicalData Where pack_size_label&gt;= '500 ml';
+
+-- Retrieve the products sorted by manufacturer name in alphabetical order:
+SELECT * from MedicalData ORDER By manufacturer_name ASC;
+
+-- Retrieve the average price for each type of product:
+SELECT type, avg(price) from MedicalData GROUP By type;
+
+-- Retrieve the manufacturers with the highest number of products:
+SELECT manufacturer_name, count(*) as Product_count from MedicalData 
+GROUP by manufacturer_name 
+order by product_count DESC limit 5;
+
+-- Retrieve the products with a price within a specific range:
+SELECT * from MedicalData Where price BETWEEN 300 and 500;
+
+
+
+
+
+
+
+
+
+
+
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
